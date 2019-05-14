@@ -1,0 +1,19 @@
+# Disallow stress test
+User-agent: stress-agent
+Disallow: /
+
+# Googlebot-image  
+user-agent : Googlebot-image 
+Allow : / 
+Disallow: /admin
+Disallow: /work
+Disallow: /front/query.jsp
+
+# Other robots
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /work
+Disallow: /front/query.jsp
+Disallow: /upload
+Disallow: /plugins
