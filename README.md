@@ -80,7 +80,10 @@ Et une extra data supplémentaire dédié aux catégories (Valeur par défaut si
  
 Une personnalisation automatique des propriétés JCMS relativement aux URLs des pages : descriptive-urls.*
 
-Format URL : /departement44/première_catégorie_autorisée_trouvée/titre/id
+Format URL contenu : /departement44/première_catégorie_autorisée_trouvée/titre/id
+Format URL membre : /departement44/première_catégorie_autorisée_trouvée/titre/id
+Format URL category : /departement44/première_catégorie_autorisée_trouvée/titre/id
+Format URL autre : /departement44/première_catégorie_autorisée_trouvée/titre/id
 
 Un PortalPolicyFilter permettant :
 
@@ -131,10 +134,8 @@ Si la propriété *fr.cg44.plugin.seo.google-site-verification* est renseignée,
 
 Listes des variables personnalisées :
 
-- niveau 1 : id de la catégorie
-- niveau 2 : id de la catégorie
-- niveau 3 : id de la catégorie
-- niveau 4 : id de la catégorie
+- ariane catégorie : id de la catégorie / id de la catégorie / ...
+- ariane nommée : nom de la catégorie / nom de la catégorie / ...
 - espace de travail : nom
 
 Configuration :
