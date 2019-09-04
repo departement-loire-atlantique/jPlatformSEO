@@ -5,7 +5,6 @@ Ce module améliore les fonctionnalités SEO pour JPlatform10.
 Liste des fonctionnalités en bref :
 
 * Plan du site personnalisable
-* Fil d'ariane personnalisé et configurable
 * Fichier robots.txt personnalisé
 * Optimisation / réécriture des URLS
 * Outil d'aide à la contribution SEO
@@ -13,24 +12,29 @@ Liste des fonctionnalités en bref :
 * Pages d'erreur 404 et 403 personnalisées
 * Page site en maintenance
 * Personnalisation du libellé "jcms" pour l'URL de JCMS
+* Personnalisation du titre de la page ?
 * Marqueur UniversalAnalytics avec variables personnalisées
 
 ## Plan du site personnalisable
-
 ### Plan du site pour les internaute
 
 Fichier JSP plugins/SEOPlugin/jsp/sitemap.jsp
 
-Réalise automatiquement un plan du site à 3 niveau basé sur une liste de catégories en ignorant certaines catégories.
+Réalise automatiquement un plan du site à 3 niveaux basé sur une liste de catégories en ignorant certaines catégories.
 
 Configuration :
 
 * La propriété *fr.cg44.plugin.seo.sitemap.cats* permet de lister les catégories racines (Liste d'ID de catégories)
+
+MAJ : on utilisera finalement une porlet Navigation avancée qui permettra de saisir les différentes catégories racine.
+Cette portlet permettra aussi de paramétrer le nombre de niveaux.
 * La propriété *fr.cg44.plugin.seo.sitemap.stopcats* permet de lister les catégories filles à ignorer (Liste d'ID de catégories)
+
+MAJ : vu avec Jérémie, plus utile. On affiche tout.
 
 ### Plan du site pour les robots
 
-Fichier JSP plugins/SEOPlugin/jsp/sitemapxml.jsp
+Fichier JSP sitemap.jsp à mettre à la racine du site.
 
 Génération automatique d'un fichier sitemap.xml à déclarer dans google search console pour le site.
 
@@ -41,13 +45,11 @@ Configuration :
 * La propriété *fr.cg44.plugin.seo.sitemapxml.type.blacklist* permet d'ignorer des types de contenu (Liste de chaine de caractères)
 * La propriété *fr.cg44.plugin.seo.sitemapxml.mime.blacklist* permet d'ignorer certains documents relativement à leur types MIMES
 
+
 ## Fil d'ariane personnalisé et configurable
 
-Le fil d'ariane se base sur les catégories du contenu actuellement affiché sur le site. Néanmoins, il est parfois utile de pouvoir masquer dans le fil d'ariane certaines catégories ou encore les renommer spécifiquement dans le fil d'ariane.
-
-Cette fonctionnalité repose sur une extra data pour toutes les catégories :
-
-- Affichée oui/non dans le fil d'ariane
+Le fil d'ariane se base sur les catégories du contenu actuellement affiché sur le site.
+Une propriété permettra de préciser la branche de catégorie utilisée pour la navigation.
     
 et un gabarit de **Portlet navigation** :
 
@@ -74,20 +76,38 @@ Cette fonctionnalité repose sur deux extra pour toutes les catégories, les por
 * Titre (URL page et META)
 * Description (META)
 
+
 Et une extra data supplémentaire dédié aux catégories (Valeur par défaut si non renseigné : non) :
 
 - Affichée oui/non dans l'URL
+
+Il faut aussi pouvoir renseigner une balise "meta robots" manuellement sur chaque page afin de maitriser parfaitement l'indexation  : 
+* ```<meta name="robots" content="noindex,nofollow" />```
+
+Les pages du sites seront soit une catégorie, soit une publication.
+
+Nous utiliserons des extradatas pour insérer ces champs. Afin de ne pas surcharger le store, nous mettrons ces extradata sur certains types de contenus uniquement via une propriété indiquant les types de contenus concernés (ex : inutile sur adresses collèges).
+
+
+Donner également la possibilité de renseigner une balise "rel canonical" sur chaque page de type éviterait également la duplication : 
+* ```<link rel="canonical" href="http://www.monsite.com/url-canonique.html"/>``` 
+
  
 Une personnalisation automatique des propriétés JCMS relativement aux URLs des pages : descriptive-urls.*
 
 Format URL contenu : /departement44/première_catégorie_autorisée_trouvée/titre/id
+
 Format URL membre : /departement44/première_catégorie_autorisée_trouvée/titre/id
+
 Format URL category : /departement44/première_catégorie_autorisée_trouvée/titre/id
+
 Format URL autre : /departement44/première_catégorie_autorisée_trouvée/titre/id
+
+**IMPORTANT : si un contenu est rattaché à plusieurs thématiques, la première catégorie autorisée trouvée est aléatoire et dépend d'un algorithme propre à jPlatform.**
 
 Un PortalPolicyFilter permettant :
 
-* d'ajouter dans l'URL soit titre de l'extra data, soit le titre du contenu ainsi que les catégories parentes du contenu autorisée à s'afficher dans l'URL
+* de calculer la syntaxe de l'URL à afficher.
 * d'ajouter automatiquement dans la page les META titre et description adaptée
 * d'ajouter automatiquement dans la page la META last-modified
 
@@ -114,7 +134,7 @@ Retrouvez aussi toutes les informations pratiques pour votre quotidien  : infotr
  
 ## Pages d'erreur 404 et 403 personnalisées
 
-Deux gabarits de pages statiques et un PortalPolicyFilter permettent d'afficher des pages personnalisés en cas d'URL introuvable dans JCMS. Lors de l'accès à une ressource protégée, une page personnaliser apparait permettant de revenir à l'accueil ou de s'authentifier.
+Deux gabarits de pages statiques et un PortalPolicyFilter permettent d'afficher des pages personnalisés en cas d'URL introuvable dans JCMS. Lors de l'accès à une ressource protégée, une page personnaliser apparait permettant de revenir à l'accueil ou de s'authentifier (code d'erreur 403 pour éviter l'indexation par Google).
 
 Ces pages sont également configurée dans apache (conf à préciser) afin de fonctionner aussi pour des URLs non prises en charges dans JCMS.
 
