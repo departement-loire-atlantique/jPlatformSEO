@@ -5,6 +5,8 @@ Ce module améliore les fonctionnalités SEO pour JPlatform10.
 Liste des fonctionnalités en bref :
 
 * Plan du site personnalisable
+    * Pour les internautes
+    * Pour les robots
 * Fichier robots.txt personnalisé
 * Optimisation / réécriture des URLS
 * Outil d'aide à la contribution SEO
@@ -13,14 +15,15 @@ Liste des fonctionnalités en bref :
 * Page site en maintenance
 * Personnalisation du libellé "jcms" pour l'URL de JCMS
 * Personnalisation du titre de la page ?
-* Marqueur UniversalAnalytics avec variables personnalisées
+* Marqueur Google Tag Manager avec variables personnalisées
 
 ## Plan du site personnalisable
+
 ### Plan du site pour les internaute
 
 Fichier JSP plugins/SEOPlugin/jsp/sitemap.jsp
 
-Réalise automatiquement un plan du site à 3 niveaux basé sur une liste de catégories en ignorant certaines catégories.
+Réalise automatiquement un plan du site basé sur une liste de catégories en ignorant certaines catégories (via extradata sur les caégories).
 
 Configuration :
 
@@ -29,8 +32,8 @@ Configuration :
 MAJ : on utilisera finalement une porlet Navigation avancée qui permettra de saisir les différentes catégories racine.
 Cette portlet permettra aussi de paramétrer le nombre de niveaux.
 * La propriété *fr.cg44.plugin.seo.sitemap.stopcats* permet de lister les catégories filles à ignorer (Liste d'ID de catégories)
+--> FAUX : il s'agit d'extradata.
 
-MAJ : vu avec Jérémie, plus utile. On affiche tout.
 
 ### Plan du site pour les robots
 
@@ -45,27 +48,69 @@ Configuration :
 * La propriété *fr.cg44.plugin.seo.sitemapxml.type.blacklist* permet d'ignorer des types de contenu (Liste de chaine de caractères)
 * La propriété *fr.cg44.plugin.seo.sitemapxml.mime.blacklist* permet d'ignorer certains documents relativement à leur types MIMES
 
+**Demande DCom : pouvoir visualiser facilement le paramétrage fait (blacklist,..), d'une manière + conviviale que via les propriétés de modules.**
 
-## Fil d'ariane personnalisé et configurable
-
-Le fil d'ariane se base sur les catégories du contenu actuellement affiché sur le site.
-Une propriété permettra de préciser la branche de catégorie utilisée pour la navigation.
-    
-et un gabarit de **Portlet navigation** :
-
-```
-plugins/SEOPlugin/types/PortletNavigate/breadcrumb.jsp
-```
-
-Configuration :
-
-* La propriété *fr.cg44.plugin.seo.breadcrumb.navcat* permet de choisir la branche de navigation pour la navigation
 
 ## Fichier robots.txt personnalisé
 
 La configuration de ce fichier permet de concentrer l'indexation des moteurs de recherche sur les contenus HTML du site.
 
 Voir fichier : /robots.txt
+
+**ATTENTION : besoin d'avoir des robots.txt différents en fonction des sous-domaines.**
+
+
+## Fil d'ariane personnalisé et configurable
+
+Le fil d'ariane se base sur les catégories du contenu actuellement affiché sur le site.  
+Une propriété permet actuellement de préciser la branche de catégorie utilisée pour la navigation.  
+Je propose de supprimer cette propriété et de mettre la catégorie de navigation directement dnas la portlet navigation. C'est son rôle et son fonctionnement.
+
+Il faut maintenir le champ "Texte au sein du fil d'Ariane" pour éventuellement renommer des catégories trop longues.
+
+Le fait de masquer une catégorie dans le fil d'ariane n'est pas utile.
+    
+    
+Un gabarit de **Portlet navigation** permet d'effectuer le rendu :
+
+```
+plugins/SEOPlugin/types/PortletNavigate/breadcrumb.jsp
+```
+
+
+## Meta "Robots"
+
+2 états possibles : soit on indexe la page et on suit les liens, soit on n'indexe pas la page et on ne suit pas les liens.
+
+Le meta robot aura alors soit les valeurs "index,follow", soit "noindex, nofollow".
+
+Les différentes pages du sites seront soit une catégorie, soit une publication.  
+La règle est la suivante : tant que la publication/catégorie/portail n'est pas dans un état visible pour un lecteur anonyme, alors la page ne doit pas être indexée ("noindex, nofollow").  
+
+L'idée est de ne pas indexéer les rubriques et contenus en cours de construction.
+
+L'état est défini par les droits JCMS et le module CategoryRights.
+
+Syntaxe de la balise : 
+
+```
+<meta name="robots" content="index,follow" />
+```
+
+## Rel canonical (à compléter)
+
+Donner également la possibilité de renseigner une balise "rel canonical" sur chaque page de type éviterait également la duplication.
+Le but est d'éviter d'avoir des URLs différentes pour un même contenu. C'est pénalisant pour l'indexation.
+ 
+```
+<link rel="canonical" href="http://www.monsite.com/url-canonique.html"/>
+```
+
+**Demande DCom : fournir un export des contenus multicatégorisés (branche "Services")**
+
+Questions : si un contenu est catégorisé X fois, quelle URL générer ? Possibilité de la générer automatiquement... **A creuser !!!**
+
+
 
 ## Optimisation / réécriture des URLS
 
@@ -76,21 +121,10 @@ Cette fonctionnalité repose sur deux extra pour toutes les catégories, les por
 * Titre (URL page et META)
 * Description (META)
 
+**La meta "keywords" est à supprimer**
 
-Et une extra data supplémentaire dédié aux catégories (Valeur par défaut si non renseigné : non) :
+Note : l'extra data actuellement dédiée aux catégories ("Affichée oui/non dans l'URL") n'est plus utile puisqu'on se limite à l'affichage de la catégorie "parente".
 
-- Affichée oui/non dans l'URL
-
-Il faut aussi pouvoir renseigner une balise "meta robots" manuellement sur chaque page afin de maitriser parfaitement l'indexation  : 
-* ```<meta name="robots" content="noindex,nofollow" />```
-
-Les pages du sites seront soit une catégorie, soit une publication.
-
-Nous utiliserons des extradatas pour insérer ces champs. Afin de ne pas surcharger le store, nous mettrons ces extradata sur certains types de contenus uniquement via une propriété indiquant les types de contenus concernés (ex : inutile sur adresses collèges).
-
-
-Donner également la possibilité de renseigner une balise "rel canonical" sur chaque page de type éviterait également la duplication : 
-* ```<link rel="canonical" href="http://www.monsite.com/url-canonique.html"/>``` 
 
  
 Une personnalisation automatique des propriétés JCMS relativement aux URLs des pages : descriptive-urls.*
@@ -105,21 +139,24 @@ Format URL autre : /departement44/première_catégorie_autorisée_trouvée/titre
 
 **IMPORTANT : si un contenu est rattaché à plusieurs thématiques, la première catégorie autorisée trouvée est aléatoire et dépend d'un algorithme propre à jPlatform.**
 
-Un PortalPolicyFilter permettant :
+
+Un PortalPolicyFilter permettra :
 
 * de calculer la syntaxe de l'URL à afficher.
-* d'ajouter automatiquement dans la page les META titre et description adaptée
+* d'ajouter automatiquement dans la page les META titre, description, et robots
 * d'ajouter automatiquement dans la page la META last-modified
+
 
 ## Outil d'aide à la contribution SEO
 
 Tableau de bord en back office permettant de voir les valeurs des propriétés clés du module ainsi que la liste des catégories pour lesquelles une personnalisation extradata a été configurée.
        
-## Balises META pour les réseaux sociaux
+## Balises META pour les réseaux sociaux (à compléter avec la DCom - Gaëlle + Clémentine)
 
 - A préciser : qu'est ce qui dynamique, qu'est qui est lié à une propriété - 
 
 Exemple :
+
 ```
 <meta property="og:site_name" content="Loire-atlantique.fr" />
 <meta property="og:url" content="https://www.loire-atlantique.fr/jcms/services-fr-c_5026" />
@@ -142,9 +179,23 @@ Exemple (hors jcms) : https://www.loire-atlantique.fr/nexitepas
 Exemple (jcms) : https://www.loire-atlantique.fr/jcms/nexitepas
 
 
-## Marqueur UniversalAnalytics avec variables personnalisées
+## Marqueur Google Tag Manager (GTM) avec variables personnalisées
 
-Si la propriété *fr.cg44.plugin.seo.analytics* est renseignée avec le code du marqueur analytics du site, alors le marqueur UniversalAnalytics est automatiquement intégré dans toutes les pages du site.
+Si la propriété *fr.cg44.plugin.seo.analytics* est renseignée avec le code du marqueur analytics du site, alors le marqueur GTM est automatiquement intégré dans toutes les pages du site.
+
+Code à insérer :
+ 
+```
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-46270573-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-46270573-1');
+</script>
+```
 
 Si la propriété *fr.cg44.plugin.seo.google-site-verification* est renseignée, alors la META suivante est automatiquement intégré dans toutes les pages du site :
 
