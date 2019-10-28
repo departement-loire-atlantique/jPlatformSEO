@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plugin PUBLIC "-//JALIOS//DTD JCMS-PLUGIN 1.7//EN" "http://support.jalios.com/dtd/jcms-plugin-1.7.dtd">
+
+<plugin name="SEOPlugin" version="0.1" author="DEP44" license="DEP44" initialize="true" order="0" url="" jsync="false" appserver="">
+  <label xml:lang="fr">Module SEO</label>
+  <description xml:lang="fr">Module permettant d'implémenter les règles standards pour améliorer le référencement naturel. Mise en place du robots.txt, réécriture d'url, saisie des meta données sur les articles et les catégories, implémentation des microformats / microdonnées.</description>
+
+  <plugincomponents>
+    <policyfilter           class="fr.cg44.plugin.seo.policyfilter.SEOPortalPolicyFilter" />
+  </plugincomponents>  
+  
+  <java-classes>
+    <java class="fr.cg44.plugin.seo.SEOUtils" />
+    <java class="fr.cg44.plugin.seo.SEOConstants" />
+    <java class="fr.cg44.plugin.seo.SEOExtensionUtils" />
+  </java-classes>
+  
+  <private-files>
+    <file path="properties/plugin.prop" />
+    <file path="properties/languages/fr.prop" />
+  </private-files>
+  <public-files>
+    <file path="docs/changelog.txt" />
+    <file path="docs/index.html" />
+    <file path="docs/images/preview.jpg" />
+    <file path="docs/images/icon.gif" />
+    <file path="css/plugin.less" />
+    <file path="js/plugin.js" />
+  </public-files>
+  <webapp-files>
+    <file path="robots.txt" />
+    <file path="bad-robots.recette" />
+    <file path="sitemap.jsp" />  
+  </webapp-files>    
+</plugin>
+
