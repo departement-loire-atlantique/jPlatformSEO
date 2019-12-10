@@ -1,41 +1,27 @@
 package fr.cg44.plugin.seo.policyfilter;
 
 import java.text.MessageFormat;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
-import com.jalios.jcms.Content;
 import com.jalios.jcms.Data;
 import com.jalios.jcms.DescriptiveURLs;
 import com.jalios.jcms.HttpUtil;
-import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
-import com.jalios.jcms.context.JcmsContext;
 import com.jalios.jcms.context.JcmsJspContext;
 import com.jalios.jcms.plugin.Plugin;
 import com.jalios.jcms.policy.BasicPortalPolicyFilter;
 import com.jalios.jcms.portlet.DisplayContext;
 import com.jalios.jcms.portlet.PortalManager;
-import com.jalios.jcms.portlet.PortalRedirect;
 import com.jalios.util.ServletUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.seo.SEOExtensionUtils;
 import fr.cg44.plugin.seo.SEOUtils;
-import generated.PortletPortal;
-import generated.WelcomeSection;
 
 public class SEOPortalPolicyFilter extends BasicPortalPolicyFilter {
   
@@ -206,122 +192,5 @@ public class SEOPortalPolicyFilter extends BasicPortalPolicyFilter {
 
   }
   
-  /** 
-   * Test : pour une catégorie donnée, renvoie vers l'accueil de rubrique correspondant, s'il existe.
-   * A développer en fonction des besoins. Ceci est une version allégée de l'ancien site.
-   * Voir s'il faut reprendre l'ancien developpement.
-   **/
-  @Override
-  public void filterDisplayContext(PortalManager.DisplayContextParameters dcp) {
 
-	  String id = dcp.id;
-	  Channel channel = Channel.getChannel();
-	  Member loggedMember = dcp.loggedMember;
-	  HttpServletResponse response = channel.getCurrentServletResponse();
-	  HttpServletRequest request = channel.getCurrentServletRequest();
-	  JcmsContext jcmsContext = channel.getCurrentJcmsContext();
-	  Locale userLocale= channel.getCurrentUserLocale();
-	  String browserUrl = ServletUtil.getUrl(request);
-	  String redirectUrl = "";
-	  Data data = channel.getData(id);
-	  String resourcePath = ServletUtil.getResourcePath(request);
-	  HashMap<String,String> canonicalUrls = new HashMap();
-
-	  // Liste noire des contenus à ne pas rediriger vers le portail "full"
-	  String[] backlistTab = channel.getStringArrayProperty("plugin.seo.fullPage.content.blacklist", new String[]{});
-	  List<String> backlistList = Arrays.asList(backlistTab);
-
-	  if (data !=null && jcmsContext.isInFrontOffice()) {
-		  if (data instanceof Category) {
-			  Category cat = (Category)data; 
-			  Content firstPublication = null;
-			  Publication firstPortal = null;
-
-			  Set<Content> contents = cat.getContentSet();
-
-			  // 1) On check si on a une (ou des) redirections
-			  TreeSet<PortalRedirect> portalRedirectSet = new TreeSet<PortalRedirect>();
-			  portalRedirectSet.addAll(cat.getPublicationSet(PortalRedirect.class));
-			  if(Util.notEmpty(portalRedirectSet)) {
-				  PortalRedirect portlet = portalRedirectSet.first();
-				  redirectUrl = portlet.getRedirectURL(loggedMember);
-			  }
-			  /*
-			  // 2) On check si on a des portails JSP Collection sur la catégorie
-			  TreeSet<PortalJspCollection> portletJspCollections = new TreeSet<PortalJspCollection>();
-			  portletJspCollections.addAll(cat.getPublicationSet(PortalJspCollection.class));
-			  if(Util.isEmpty(redirectUrl) && Util.notEmpty(portletJspCollections)) {
-				  PortalJspCollection portlet = portletJspCollections.first();
-				  redirectUrl = portlet.getDisplayUrl(userLocale);
-			  }
-			  */
-			  // 3) On check si on a des portails sur la catégorie
-			  TreeSet<PortletPortal> portletPortalSet = new TreeSet<PortletPortal>();
-			  portletPortalSet.addAll(cat.getPublicationSet(PortletPortal.class));
-			  if(Util.isEmpty(redirectUrl) && Util.notEmpty(portletPortalSet)) {
-				  PortletPortal portlet = portletPortalSet.first();
-				  redirectUrl = portlet.getDisplayUrl(userLocale);
-			  }
-			  
-			  // 4) On check si on a des publications de type "WelcomeSection" sur la catégorie
-			  TreeSet<WelcomeSection> welcomeSectionSet = new TreeSet<WelcomeSection>();
-			  welcomeSectionSet.addAll(cat.getPublicationSet(WelcomeSection.class));
-			  if(Util.isEmpty(redirectUrl) && Util.notEmpty(welcomeSectionSet)) {
-				  WelcomeSection pub = welcomeSectionSet.first();
-				  firstPublication = pub;
-			  }
-			  
-			  // 5) On check les autres publications
-			  if(Util.isEmpty(redirectUrl)) {
-				  for(Content itContent : contents) {
-					  
-		    		if(Util.notEmpty(backlistList) && backlistList.contains(itContent.getClass().getSimpleName())) {
-		    			continue;	
-		    		}
-		    		else {
-		    			firstPublication = itContent;
-	    				break;
-		    		}
-					  
-
-				  }
-			  }
-			  if(Util.notEmpty(firstPortal)) {
-				  redirectUrl = firstPortal.getDisplayUrl(userLocale);
-			  }
-			  if(Util.notEmpty(firstPublication)) {
-				  redirectUrl = firstPublication.getDisplayUrl(userLocale);
-
-				  /* On force un portal full pour l'instant sinon les anciens portails prennent
-				   * le dessus et buggent !
-				   */
-				  redirectUrl+="?portal="+fullPortal;
-				  redirectUrl+="&category=" + cat.getId();
-
-			  }
-
-			  if (request.getMethod() != "POST") {
-				  response.setStatus(301);
-				  response.setHeader("Location", ServletUtil.getContextPath(request)+"/"+redirectUrl);
-			  }
-		  }
-
-
-
-
-			  /*
-		    if (!ToolsUtil.inArray(categoryException, currentCategory.getId())) {
-		      if (dcp.overrided == null && autorizedForFullDisplayPortal(dcp.id)) {
-		        String portalId = channel.getProperty("plugin.tools.fullDisplayPortal");
-		        PortalInterface portalStandard = (PortalInterface) channel.getPublication(portalId);
-		        if (portalStandard != null) {
-		          dcp.overrided = portalStandard;
-		          LOGGER.info("applique le portail '" + portalStandard + "' (" + portalId + ")");
-		        }
-		      }
-		    }
-			   */
-
-		  }
-  }
 }
