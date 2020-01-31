@@ -1,1 +1,2 @@
 jcmsplugin.seo.sitemap.content.blacklist: Liste noire de types à exclure pour le sitemap
+plugin.seo.gtm.id:ID du marqueur Google Tag Manager

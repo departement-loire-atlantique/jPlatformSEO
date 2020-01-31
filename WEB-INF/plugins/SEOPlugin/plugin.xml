@@ -20,16 +20,15 @@
     <file path="properties/languages/fr.prop" />
   </private-files>
   <public-files>
-    <file path="docs/changelog.txt" />
-    <file path="docs/index.html" />
-    <file path="docs/images/preview.jpg" />
-    <file path="docs/images/icon.gif" />
-    <file path="css/plugin.less" />
-    <file path="js/plugin.js" />
+    <directory path="docs" />
+    <directory path="js" />
+    <directory path="jsp" />
+    <directory path="maintenance" />  
+    <file path="jsp/googleTagManager/headerTag.jsp" include="EMPTY_HEADER" />
+    <file path="jsp/googleTagManager/bodyTag.jsp" include="EMPTY_HEADER_BODY_START" />      
   </public-files>
   <webapp-files>
     <file path="robots.txt" />
-    <file path="bad-robots.recette" />
     <file path="sitemap.jsp" />  
   </webapp-files>    
 </plugin>
