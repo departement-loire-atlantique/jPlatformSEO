@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><%
-%><%-- 
+%><%--
 
   @Summary: Generates a sitemap, by following guidelines Sitemaps XML format http://www.sitemaps.org/
   @Copyright: Jalios SA - Sitemap Plugin

@@ -6,13 +6,11 @@
   <description xml:lang="fr">Module permettant d'implémenter les règles standards pour améliorer le référencement naturel. Mise en place du robots.txt, réécriture d'url, saisie des meta données sur les articles et les catégories, implémentation des microformats / microdonnées.</description>
 
   <plugincomponents>
-    <policyfilter           class="fr.cg44.plugin.seo.policyfilter.SEOPortalPolicyFilter" />
+    <policyfilter class="fr.cg44.plugin.seo.policyfilter.SEOPortalPolicyFilter" />
   </plugincomponents>  
   
   <java-classes>
-    <java class="fr.cg44.plugin.seo.SEOUtils" />
-    <java class="fr.cg44.plugin.seo.SEOConstants" />
-    <java class="fr.cg44.plugin.seo.SEOExtensionUtils" />
+    <java package="fr.cg44.plugin.seo"/>  
   </java-classes>
   
   <private-files>
@@ -21,15 +19,12 @@
   </private-files>
   <public-files>
     <directory path="docs" />
-    <directory path="js" />
     <directory path="jsp" />
     <directory path="maintenance" />  
     <file path="jsp/googleTagManager/headerTag.jsp" include="EMPTY_HEADER" />
-    <file path="jsp/googleTagManager/bodyTag.jsp" include="EMPTY_HEADER_BODY_START" />      
-  </public-files>
-  <webapp-files>
+    <file path="jsp/googleTagManager/bodyTag.jsp" include="EMPTY_HEADER_BODY_START" />
     <file path="robots.txt" />
-    <file path="sitemap.jsp" />  
-  </webapp-files>    
+    <file path="sitemap.jsp" />       
+  </public-files>
 </plugin>
 

@@ -17,5 +17,3 @@ Disallow: /work
 Disallow: /front/query.jsp
 Disallow: /upload
 Disallow: /plugins
-
-#
