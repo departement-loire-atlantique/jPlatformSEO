@@ -1,5 +1,26 @@
 # jPlatformSEO
 
+<p>
+  <a href="https://travis-ci.org/organizations/departement-loire-atlantique">
+    <img src="https://travis-ci.org/departement-loire-atlantique/jPlatformSEO.svg?branch=master" />
+  </a>
+  <!--
+  <a href="https://sonarcloud.io/organizations/departement-loire-atlantique">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=ncloc" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=bugs" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=code_smells" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=coverage" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=duplicated_lines_density" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=sqale_rating" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=alert_status" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=reliability_rating" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=security_rating" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=sqale_index" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=departement-loire-atlantique_jPlatformSEO&metric=vulnerabilities" />
+    </a>
+    -->
+</p>
+
 Ce module améliore les fonctionnalités SEO pour JPlatform10.
 
 Liste des fonctionnalités en bref :
