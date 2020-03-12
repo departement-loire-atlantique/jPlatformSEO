@@ -6,11 +6,11 @@ env:
 services:
 - docker
 
-#addons:
-#  sonarcloud:
-#    organization: departement-loire-atlantique
-#    token:
-#      secure: M+8vAHlAT0EB4byV3wLQcWKiZF/JmolYEd7GDydRwAXBqWZsCNmWh80C0Nr2o4OhQpHrvSe3MROD4ZAH8gYAaWYZwaFm00NLLrjW1yb3rx0ExgeuSS5tzmjujSf61hbQaKw+3u2nDZMWaANfti4a5Cur9tFEcLXt2SAhNWV9jWxXb2cHrNdcT22qKigXrzJBWeAwvcKqCcKKGPoMfiMVcMqTb7caMRImIpleniRFQ/kjhOVrE10Qj/IyHgR34a8IBLBGvjJVNkCmYNMJ4IIOXjZl4QxJo68PvkXqToD7+bSZRp2GD1yaOFY4yr+Qu9L8ZlPgJ5D2VuPfYgUAGkBLt+p5SOP34a40H3OHTjxBaA4xCF3oswdO9w0zriNjgw+Fxn3XjGYWwpcrP69uZPDpgBAY9xTzFeZQA15HCqqKObe352FbXcYg4vuqKbGIcnUVobPXBicjGhgWzQMI/LWHb5aDRyOaUJL3UfPv0yKr55Re2VvqLg4zc52oNu6kuPT+dEWig9i5GEhQjTbLdMdZfGGk+++95PS9c39hp19cBYcjbcM6PdGYHWf/lKfi9qk7JZTXYoaso0eiS2Nm2gnYD9boPODSBlhWV+gQC0HyJjNKJ/79wYLqYRqXddHVqJiF5NdbuYZsH18Wilu1ssMshuMncTZ5c140GWHpsplKtYA=
+addons:
+  sonarcloud:
+    organization: departement-loire-atlantiqu-1
+    token:
+      secure: ragbx6x82A4bzYxBg0C9oz6cHnHbPf6dkEtMvN8+IltxoKCO+voUmpIdKE9N1bC2kqNoW2V2igjxbUV4Qh7aqaQRY74XOEpVIBH41J5dZ9gLPcFK++KeUyGW2ND877tpaYz6Wf5uH0ssEXJVJvP9hhE3kPq1eKUgT7UAXckM56MsBpEJ+yyBCTDWlkxyh7RkBIysSKJY4qDrTXC0EbThB2U+hsOTXVRcTj/AoyHmPnqHQ8LwetRjUtqxLP/yMdyZ8sx2Ru9j95NS/k+abanOtImIIwPZmhKkA6Q0eWBUoMUJV6cL2eXlNMHSd/yg+1/aQlUiT/52aWiCLKt26P5DLtWyjj8/b9dAcabOd1Aqyo4dyci7XfXNi4tUYMXKqOvk2Dn9r6V5wR4mKcbf1FyGLDLelbVuDT0curIo+Y4CleBdZKEUTfXx8wUNCz+uEQLjoQdmyaTcYYd+ZNZ9ynkhVVyKzbL3p7FHVX9dfRdrzcBTmQMRlIBc7CZuV3haQpzn3AEwVHXHqk7tbtSGsHRJFdf5YzwJqjx97xfvrBPfqo6XbJwBvagGAuxBYsglm6A8rqCRy3gkBS0/Ud41JPxXSK3uESUDko1OK+UG3gcMaFyFevt3ELkf5yxU924BrtyZ6u3LT0BaiCpwNrJnoWphtbytS1ibHI5p8epoGiAOSsI=
 
 before_script:
 - echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
@@ -19,8 +19,8 @@ before_script:
 script:
 - docker run -v ${TRAVIS_BUILD_DIR}:/root/source --name buildimage -t julienbayle/jplatformbuild
 - docker cp buildimage:/root/dist .
-#- export CODE_VERSION=`git describe`
-#- sonar-scanner -Dsonar.projectVersion=$CODE_VERSION
+- export CODE_VERSION=`git describe`
+- sonar-scanner -Dsonar.projectVersion=$CODE_VERSION
 
 deploy:
   provider: releases
