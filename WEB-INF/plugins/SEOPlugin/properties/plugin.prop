@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------------
 # Le préfix doit aussi être indiqué dans le web.xml
 descriptive-urls.enabled:         true
-descriptive-urls.prefix:          departement44       
+descriptive-urls.prefix:          44       
 descriptive-urls.language.enabled:false
 descriptive-urls.text.enabled:    true
 
