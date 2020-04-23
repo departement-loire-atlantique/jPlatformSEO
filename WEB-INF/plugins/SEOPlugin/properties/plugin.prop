@@ -10,7 +10,7 @@ descriptive-urls.text.enabled:    true
 # coma separated ids of root categories used to retrieve first
 # publication's category displayed in URLs
 # leave empty to use default jcms root cat
-descriptive-urls.text.root-cats:  c_5026,c_5060,c_5062,c_5063,c_5064
+descriptive-urls.text.root-cats:  c_5026, c_1154180, c_5089, p2_56300, c_5060,c_5062,c_5063,c_5064
 
 # Publications descriptive's URLs format
 # {0} ==> language

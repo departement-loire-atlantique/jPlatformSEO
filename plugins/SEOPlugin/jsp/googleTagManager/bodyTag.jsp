@@ -1,7 +1,7 @@
 <%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <%
-if (jcmsContext.isInFrontOffice()) { %>
+if (jcmsContext.isInFrontOffice() || "true".equals(request.getAttribute("pageErreur"))) { %>
 	<%-- TODO : tester si l'utilisateur a donné son consentement --%>
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%=channel.getProperty("plugin.seo.gtm.id")%>"
