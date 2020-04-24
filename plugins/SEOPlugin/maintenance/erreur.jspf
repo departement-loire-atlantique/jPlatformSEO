@@ -48,7 +48,7 @@
 	
 <footer role="contentinfo">
     <%-- JSP Footer --%>
-    <jalios:include jsp="plugins/SoclePlugin/jsp/portal/footerSection.jsp"/>
+    <jalios:include id='<%= channel.getProperty("plugin.seo.error.footer.id") %>'/>
     
     <%-- JSP Navigation --%>
     <jalios:include id='<%= channel.getProperty("plugin.seo.error.navigationfooter.id") %>'/>

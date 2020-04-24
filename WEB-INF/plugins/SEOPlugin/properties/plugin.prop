@@ -52,8 +52,8 @@ descriptive-urls.text.dft-format: {1}
 
 plugin.seo.sitemap.content.blacklist:
 plugin.seo.fullPage.content.blacklist:
-plugin.seo.category.navigation.id:c_5025
-plugin.seo.portal.fullDisplay.id:c_1088637
+plugin.seo.category.navigation.id: c_5025
+plugin.seo.portal.fullDisplay.id: c_1088637
 
 # ------------------------------------------------------------
 #  Analytics
@@ -63,6 +63,6 @@ plugin.seo.gtm.id:GTM-WHL52DJ
 # ------------------------------------------------------------
 #  Pages d'erreur
 # ------------------------------------------------------------
-
-plugin.seo.error.plusrecherches.id:c_1274150
-plugin.seo.error.navigationfooter.id:c_1154095
+plugin.seo.error.plusrecherches.id: c_1274150
+plugin.seo.error.footer.id: c_1154096
+plugin.seo.error.navigationfooter.id: c_1154095
