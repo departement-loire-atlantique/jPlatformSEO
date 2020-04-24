@@ -17,7 +17,7 @@ if (jcmsContext.isInFrontOffice() || "true".equals(request.getAttribute("pageErr
 		pageType = pub.getClass().getSimpleName();
 	}
 	if(Util.notEmpty(currentCategory)){
-		breadcrumb = currentCategory.getAncestorString(" > ", true);
+		breadcrumb = HttpUtil.encodeForHTMLAttribute(currentCategory.getAncestorString(" > ", true));
 	}
 	%>
 	
