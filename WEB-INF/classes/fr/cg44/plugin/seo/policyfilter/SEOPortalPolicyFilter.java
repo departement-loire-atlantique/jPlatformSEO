@@ -22,6 +22,7 @@ import com.jalios.util.Util;
 
 import fr.cg44.plugin.seo.SEOExtensionUtils;
 import fr.cg44.plugin.seo.SEOUtils;
+import generated.PageCarrefour;
 
 public class SEOPortalPolicyFilter extends BasicPortalPolicyFilter {
   
@@ -96,6 +97,13 @@ public class SEOPortalPolicyFilter extends BasicPortalPolicyFilter {
 	  String msgFmtPattern;
 	  Object msgFmtArguments[];
 
+	  if (data instanceof PageCarrefour)	{
+	  	PageCarrefour pageCarrefour = (PageCarrefour)data;
+	  	if(Util.notEmpty(pageCarrefour.getTitreUrl())){
+	  		name = pageCarrefour.getTitreUrl();
+	  	}
+	  }
+	  
 	  if (!(data instanceof Publication))	{
 		  return super.getDescriptiveURLText(descriptiveUrlText, data, locale);
 	  }
@@ -191,6 +199,8 @@ public class SEOPortalPolicyFilter extends BasicPortalPolicyFilter {
         + ServletUtil.getUrl(channel.getCurrentJcmsContext().getRequest()));
 
   }
+  
+
   
 
 }
