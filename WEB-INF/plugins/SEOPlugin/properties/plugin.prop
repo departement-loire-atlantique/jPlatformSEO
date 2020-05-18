@@ -63,6 +63,8 @@ plugin.seo.gtm.id:GTM-WHL52DJ
 # ------------------------------------------------------------
 #  Pages d'erreur
 # ------------------------------------------------------------
+plugin.seo.error.404 : plugins/SEOPlugin/maintenance/404.jsp
+plugin.seo.error.403 : plugins/SEOPlugin/maintenance/403.jsp
 plugin.seo.error.plusrecherches.id: c_1274150
 plugin.seo.error.footer.id: c_1154096
 plugin.seo.error.navigationfooter.id: c_1154095
