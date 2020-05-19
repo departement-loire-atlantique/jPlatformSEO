@@ -6,7 +6,6 @@ plugin.seo.gtm.id: ID du marqueur Google Tag Manager
 # ------------------------------------------------------------
 plugin.seo.error.recherchemotcle: Recherchez par mots-clés :
 plugin.seo.error.ou: Ou
-plugin.seo.error.plusrecherches.id: ID des "contenus les + recherchés"
 plugin.seo.error.footer.id: ID de la portlet du footer
 plugin.seo.error.navigationfooter.id: ID de la portlet de navigation du footer
 plugin.seo.error.404.titre: Erreur 404

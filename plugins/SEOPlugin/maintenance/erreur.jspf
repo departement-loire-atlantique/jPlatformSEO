@@ -24,7 +24,7 @@
 
 					<%-- Formulaire de recherche --%>
 					<div class="col-5-small-1 txtcenter">
-						<p class="h4-like" id="inp-rech"><%= glp("plugin.seo.error.recherchemotcle") %></p>
+						<jalios:include id='<%= channel.getProperty("jcmsplugin.socle.recherche.portletsearch.id") %>' />
 					</div>
 
 					<div class="col-2-small-1 txtcenter ds44-h100">
@@ -35,7 +35,7 @@
 
 					<%-- Contenus les + recherchés --%>
 					<div class="col-5-small-1">
-						<jalios:include id='<%= channel.getProperty("plugin.seo.error.plusrecherches.id") %>' />
+						<jalios:include id='<%= channel.getProperty("jcmsplugin.socle.recherche.portletmea.id") %>' />
 					</div>
 
 				</div>
