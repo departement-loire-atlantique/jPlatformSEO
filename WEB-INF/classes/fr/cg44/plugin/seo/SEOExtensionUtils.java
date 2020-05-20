@@ -10,6 +10,8 @@ import com.jalios.jcms.Publication;
 import com.jalios.jcms.portlet.PortalManager;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.socle.SocleUtils;
+
 public class SEOExtensionUtils {
 
   private static final Logger logger = Logger.getLogger(SEOExtensionUtils.class);
@@ -161,7 +163,7 @@ public class SEOExtensionUtils {
    */
   public static final String getPublicationMetaRobot(Publication pub)  {
 	  
-	  if(pub.canBeReadBy(null,false) && SEOUtils.hasAncestor(pub, navigationBranchCat)) {
+	  if(pub.canBeReadBy(null,false) && SEOUtils.hasAncestor(pub, navigationBranchCat) && !SocleUtils.isNonRepertoriee(pub)) {
 		  return metaRobotsContentOK;  
 	  }
 
