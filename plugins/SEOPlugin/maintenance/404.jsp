@@ -6,4 +6,4 @@
 <% request.setAttribute("titreErreur", glp("plugin.seo.error.404.titre")); %>
 <% request.setAttribute("soustitreErreur", glp("plugin.seo.error.404.soustitre")); %>
 
-<%@include file="erreur.jspf" %>
+<%@include file="erreur40x.jspf" %>

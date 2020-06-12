@@ -1,0 +1,51 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="jcms.tld" prefix="jalios" %>
+
+<% request.setAttribute("title", channel.getName() + " - " + request.getAttribute("titrePage"));%>
+
+<%@ include file='/jcore/doEmptyHeader.jspf' %>
+
+<%-- JSP Header --%>
+<jalios:include jsp="plugins/SoclePlugin/jsp/portal/headerSection.jsp"/>
+
+<main role="main" id="content">
+    <section class="ds44-container-large">
+        <div class="ds44-inner-container">
+
+            <div class="ds44-pageHeaderContainer">
+                <picture class="ds44-pageHeaderContainer__pictureContainer">
+                    <img src="https://design.loire-atlantique.fr/assets/images/501.jpg" alt="" class="ds44-headerImg" />
+                </picture>
+                <div class="ds44-titleContainer">
+                    <div class="ds44-alphaGradient ds44-alphaGradient--header">
+                        <h1 class="h1-like ds44-text--colorInvert"><%= request.getAttribute("titreErreur") %></h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="u-txt-center ds44-mtb5">
+                <h2 class="h2-like"><%= request.getAttribute("soustitreErreur") %></h2>
+            </div>
+            <div class="u-txt-center ds44-mtb5">
+               <a href="javascript:history.back()" class="ds44-btnStd"><i class="icon icon-long-arrow-left" aria-hidden="true"></i><span class="ds44-btnInnerText"><%= glp("plugin.seo.error.back") %></span></a>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+	
+<footer role="contentinfo">
+    <%-- JSP Footer --%>
+    <jalios:include id='<%= channel.getProperty("plugin.seo.error.footer.id") %>'/>
+    
+    <%-- JSP Navigation --%>
+    <jalios:include id='<%= channel.getProperty("plugin.seo.error.navigationfooter.id") %>'/>
+    
+    <p id="backToTop" class="ds44-posRi ds44-hide-mobile ds44-btn-fixed ds44-js-button-sticky" data-is-delayed="true">
+        <a class="ds44-icoLink ds44-icoLink--footer" href="#top"><i class="icon icon-arrow-up icon--sizeXL" aria-hidden="true"></i><span class="ds44-icoTxtWrapper"><%= glp("jcmsplugin.socle.hautDepage")%></span></a>
+    </p>
+</footer>
+    
+<%@ include file="/jcore/doEmptyFooter.jspf" %>    

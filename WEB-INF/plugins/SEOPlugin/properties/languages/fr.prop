@@ -12,3 +12,8 @@ plugin.seo.error.404.titre: Erreur 404
 plugin.seo.error.404.soustitre: Ce que vous cherchez est introuvable...
 plugin.seo.error.403.titre: Erreur 403 - Accès refusé
 plugin.seo.error.403.soustitre: Vous n'avez pas les droits pour accéder à la page demandée
+plugin.seo.error.500.titre: Erreur 500
+plugin.seo.error.500.soustitre: Oups, il semble qu’il y ait un problème technique...
+plugin.seo.error.503.titre: Erreur 503
+plugin.seo.error.back: Retour à la page précédente
+plugin.seo.error.retry: Réessayer
