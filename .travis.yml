@@ -18,7 +18,8 @@ before_script:
 
 script:
 - docker run -v ${TRAVIS_BUILD_DIR}:/root/source --name buildimage -t julienbayle/jplatformbuild
-- docker cp buildimage:/root/dist .
+- docker cp buildimage:/root/dist ${TRAVIS_BUILD_DIR}/
+- export FILE_NAME=`ls ${TRAVIS_BUILD_DIR}/dist/*.zip`
 - export CODE_VERSION=`git describe`
 - sonar-scanner -Dsonar.projectVersion=$CODE_VERSION
 
@@ -26,7 +27,7 @@ deploy:
   provider: releases
   api_key:
     secure: NzuKuebnWpNIysU9ABtmVlX0VjsWqpy7YUilwnyaIL8hQ65wkA2nRRb2vdDh2AymgDsStO93SCepnO8YDpwmMyda/zgrt1TBJhpU1pSfqfUr+8rXCWgNOXcX5eoqOsolGemapHZ1AqeTmxfZr3RugZe0IENVhktL11guWibhF58PlaKH9/T6fZJxTW2Cr86wVYCxNX8t8KnS+hWwxCJ2X+F1+GUqeE06vUmKFZPUaH5utuVcKres/oJ9LUtY3noYvBDdq+8g+3M0q/2bTpIRMvo7ujv10Q16dOB1T4qcZtTFxsSjUb9h3H5AuQL66QSbh1Lbir50zwdpPpEMt85iujsZZzujVZYsGPYXAHy/Wt7NgvWjPWCbJllbIvLuY8AncvnbFzIgq7MH/ZrbleRM/z3W1qLZuUspQ/23qJN0YBh9WT8LpE3D630+i1FvAqgWBm8gIpLrRGADJSNt+HeJlPJCXI4GgHZsB0E+1drOEJeutpvWeLqIIPiRfszJDVCibDw/GOcYzeRx690nt4BqwEeU7nUh0Fd6GBgmyAMsMKQ58oScdHV6r/4q6Nu54b+LuxpBPDd2bSYk0w1NMSvQgNlDwRIEff4MoJ+Z37NDHmRYZV4rdItcHxFX6TOTG+VNV3U/dO1t8CGNYx7TWy9YQ3KYGUozncap5InNZUyEVxM=
-  file: "${TRAVIS_BUILD_DIR}/dist/*.zip"
+  file: "${FILE_NAME}"
   skip_cleanup: true
   on:
     tags: true
