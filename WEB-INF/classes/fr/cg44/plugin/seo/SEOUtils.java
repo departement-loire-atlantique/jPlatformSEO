@@ -86,7 +86,7 @@ public class SEOUtils {
 	 * */
 	public static boolean hasAncestor(Publication pub, Category ancestorCat) {
 		for (Category itPubCategory : pub.getCategorySet()) {
-			if(itPubCategory.hasAncestor(ancestorCat)) {
+			if(itPubCategory.hasAncestor(ancestorCat) || itPubCategory.equals(ancestorCat)) {
 				return true;
 			}
 		}
@@ -94,7 +94,7 @@ public class SEOUtils {
 	}
 	
 	public static boolean hasAncestor(Category cat, Category ancestorCat) {
-		if(cat.hasAncestor(ancestorCat)) {
+		if(cat.hasAncestor(ancestorCat) || cat.equals(ancestorCat)) {
 			return true;
 		}
 		return false;
