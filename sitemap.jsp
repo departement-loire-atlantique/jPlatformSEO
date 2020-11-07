@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><%
-%><%-- 
+<?xml version="1.0" encoding="UTF-8"?>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%
+%><%--
 
   @Summary: Generates a sitemap, by following guidelines Sitemaps XML format http://www.sitemaps.org/
   @Copyright: Jalios SA - Sitemap Plugin
@@ -18,7 +20,7 @@
    out.print(data.getDisplayUrl(userLocale));
    // Force le portail full display de l'espace enseignant pour les fiche ressource
    if("FicheRessource".equals(data.getClass().getSimpleName())) {
-	   out.print("?portal=" + channel.getProperty("jcmsplugin.espaceenseignants.full.portal"));
+       out.print("?portal=" + channel.getProperty("jcmsplugin.espaceenseignants.full.portal"));
    }
    out.println("</loc>");
    
@@ -70,13 +72,17 @@
        continue;
      }
    }
-     
+  
    
-   // Passe les contenus sur la liste noire
-   if(Util.notEmpty(backlistList) && backlistList.contains(content.getClass().getSimpleName())) {
-	   continue;
+   // Passe les contenus sur la liste noire OU les contenus de la catégorie "non répertorié"
+   if(  (Util.notEmpty(backlistList) && backlistList.contains(content.getClass().getSimpleName())) || 
+       SocleUtils.isNonRepertoriee(content) ) {
+       continue;
    }
    
+   
+   
+  
    generateUrl(out, userLocale, content, -1);
  }
  

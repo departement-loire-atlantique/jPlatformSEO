@@ -23,8 +23,10 @@
     <directory path="maintenance" />  
     <file path="jsp/googleTagManager/headerTag.jsp" include="EMPTY_HEADER" />
     <file path="jsp/googleTagManager/bodyTag.jsp" include="EMPTY_HEADER_BODY_START" />
-    <file path="robots.txt" />
-    <file path="sitemap.jsp" />       
   </public-files>
+  <webapp-files>
+    <file path="robots.txt" />
+    <file path="sitemap.jsp" />  
+  </webapp-files>  
 </plugin>
 
