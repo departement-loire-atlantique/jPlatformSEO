@@ -163,7 +163,7 @@ public class SEOExtensionUtils {
    */
   public static final String getPublicationMetaRobot(Publication pub)  {
 	  
-	  if(pub.canBeReadBy(null,false) && SEOUtils.hasAncestor(pub, navigationBranchCat) && !SocleUtils.isNonRepertoriee(pub)) {
+	  if(pub.canBeReadBy(null,false) && SEOUtils.hasAncestor(pub, navigationBranchCat) && !SocleUtils.isNonRepertoriee(pub) && !pub.isImported()) {
 		  return metaRobotsContentOK;  
 	  }
 
