@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
-<%
+<?xml version="1.0" encoding="UTF-8"?><%
 %><%--
 
   @Summary: Generates a sitemap, by following guidelines Sitemaps XML format http://www.sitemaps.org/
@@ -72,17 +70,13 @@
        continue;
      }
    }
-  
+     
    
-   // Passe les contenus sur la liste noire OU les contenus de la catégorie "non répertorié"
-   if(  (Util.notEmpty(backlistList) && backlistList.contains(content.getClass().getSimpleName())) || 
-       SocleUtils.isNonRepertoriee(content) ) {
+   // Passe les contenus sur la liste noire et les contenus importés
+   if((Util.notEmpty(backlistList) && backlistList.contains(content.getClass().getSimpleName())) || content.isImported()) {
        continue;
    }
    
-   
-   
-  
    generateUrl(out, userLocale, content, -1);
  }
  
