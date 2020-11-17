@@ -73,7 +73,8 @@
      
    
    // Passe les contenus sur la liste noire et les contenus importés
-   if((Util.notEmpty(backlistList) && backlistList.contains(content.getClass().getSimpleName())) || content.isImported()) {
+   if((Util.notEmpty(backlistList) && backlistList.contains(content.getClass().getSimpleName()))
+   		|| content.isImported() || SocleUtils.isNonRepertoriee(content) ) {
        continue;
    }
    
