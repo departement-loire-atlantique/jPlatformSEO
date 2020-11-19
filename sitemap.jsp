@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><%
-%><%--
+<?xml version="1.0" encoding="UTF-8"?>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%--
 
   @Summary: Generates a sitemap, by following guidelines Sitemaps XML format http://www.sitemaps.org/
   @Copyright: Jalios SA - Sitemap Plugin
