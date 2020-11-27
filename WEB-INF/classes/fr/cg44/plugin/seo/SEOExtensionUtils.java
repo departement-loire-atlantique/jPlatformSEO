@@ -153,7 +153,6 @@ public class SEOExtensionUtils {
    * Calcul de l'attribut "content" de la balise meta "robots" pour une publication donnée.
    * Si la publication est protégée par des droits OU qu'elle est dans une catégorie / sous catégorie protégée,
    * alors on ne doit pas l'indexer ni suivre les liens.
-   * De même si elle est dans une branche de catégorie autre que de la navigation.
    * Les valeurs retournées seront soit "noindex,nofollow", soit "index,follow".
    * 
    * ex : <meta name="robots" content="noindex,nofollow" />
@@ -163,7 +162,7 @@ public class SEOExtensionUtils {
    */
   public static final String getPublicationMetaRobot(Publication pub)  {
 	  
-	  if(pub.canBeReadBy(null,false) && SEOUtils.hasAncestor(pub, navigationBranchCat) && !SocleUtils.isNonRepertoriee(pub) && !pub.isImported()) {
+	  if(pub.canBeReadBy(null,false) && !SocleUtils.isNonRepertoriee(pub) && !pub.isImported()) {
 		  return metaRobotsContentOK;  
 	  }
 
