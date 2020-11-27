@@ -182,7 +182,7 @@ public class SEOExtensionUtils {
    * @return  Une chaine de caractère avec le contenu de l'attribut "content". 
    */
   public static final String getCategoryMetaRobot(Category cat) {
-	  if(null!=cat && cat.canBeReadBy(null,false) && SEOUtils.hasAncestor(cat, navigationBranchCat)) {
+	  if(null!=cat && cat.canBeReadBy(null,false)) {
 		  return metaRobotsContentOK;  
 	  }
 
