@@ -158,7 +158,6 @@ public class SEOPortalPolicyFilter extends BasicPortalPolicyFilter {
 			  paramJcmsJspContext.setPageTitle(titlePage);
 		  }
 
-		  Portal metaPortal = (Portal)paramJcmsJspContext.getRequest().getAttribute(PortalManager.PORTAL_PORTAL);
 		  Publication metaPub = (Publication)paramJcmsJspContext.getRequest().getAttribute(PortalManager.PORTAL_PUBLICATION);
 		  
 		  boolean noindex = (paramJcmsJspContext.getRequest().getAttribute("noindex") == Boolean.TRUE);
@@ -167,10 +166,6 @@ public class SEOPortalPolicyFilter extends BasicPortalPolicyFilter {
 		    // Si on a reçu un attribut "noindex" (via une portlet recherche facette par ex)
         paramJcmsJspContext.addHttpNameHeader("robots", SEOExtensionUtils.metaRobotsContentNOK); 
 		  }
-		  else if (Util.notEmpty(metaPortal) && metaPortal.equals(channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal"))) {
-        // Si le contenu est le portail de recherche à facettes
-        paramJcmsJspContext.addHttpNameHeader("robots", SEOExtensionUtils.metaRobotsContentNOK);
-      }
       else if (Util.notEmpty(metaPub)) {
 			  // Si le contenu est de type Publication
 			  String metarobots = SEOExtensionUtils.getPublicationMetaRobot(metaPub);
