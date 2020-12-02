@@ -17,8 +17,8 @@ public class SEOExtensionUtils {
   private static final Logger logger = Logger.getLogger(SEOExtensionUtils.class);
   private static final Channel channel = Channel.getChannel();
   private static final Category navigationBranchCat = channel.getCategory(channel.getProperty("plugin.seo.category.navigation.id","j_5"));
-  private static final String metaRobotsContentOK = "index,follow";
-  private static final String metaRobotsContentNOK = "noindex,nofollow";
+  public static final String metaRobotsContentOK = "index,follow";
+  public static final String metaRobotsContentNOK = "noindex,nofollow";
   
   public static final String getTitlePage(Channel channel, String defaultTitlePage){
     try{
