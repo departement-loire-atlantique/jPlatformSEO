@@ -17,3 +17,11 @@ plugin.seo.error.500.soustitre: Oups, il semble qu’il y ait un problème techn
 plugin.seo.error.503.titre: Erreur 503
 plugin.seo.error.back: Retour à la page précédente
 plugin.seo.error.retry: Réessayer
+
+# ------------------------------------------------------------
+#  Extradata titre SEO
+# ------------------------------------------------------------
+extra.Content.jcmsplugin.seo.titreseo.fr: Titre SEO FR
+extra.Content.jcmsplugin.seo.titreseo.fr.help: Veuillez rédiger un maximum de 60 caractères
+extra.Content.jcmsplugin.seo.titreseo.en: Titre SEO EN
+extra.Content.jcmsplugin.seo.titreseo.en.help: Veuillez rédiger un maximum de 60 caractères

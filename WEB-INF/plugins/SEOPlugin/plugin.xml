@@ -7,6 +7,7 @@
 
   <plugincomponents>
     <policyfilter class="fr.cg44.plugin.seo.policyfilter.SEOPortalPolicyFilter" />
+    <datacontroller class="fr.cg44.plugin.seo.datacontroller.TitreSeoPublicationController" types="Publication" />
   </plugincomponents>  
   
   <java-classes>
