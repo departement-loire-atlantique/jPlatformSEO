@@ -67,3 +67,9 @@ plugin.seo.error.404 : plugins/SEOPlugin/maintenance/404.jsp
 plugin.seo.error.403 : plugins/SEOPlugin/maintenance/403.jsp
 plugin.seo.error.footer.id: c_1154096
 plugin.seo.error.navigationfooter.id: c_1154095
+
+# ------------------------------------------------------------
+#  Extradata titre SEO
+# ------------------------------------------------------------
+extra.Content.jcmsplugin.seo.titreseo.fr: 
+extra.Content.jcmsplugin.seo.titreseo.en: 
