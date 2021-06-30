@@ -21,7 +21,7 @@ plugin.seo.error.retry: Réessayer
 # ------------------------------------------------------------
 #  Extradata titre SEO
 # ------------------------------------------------------------
-extra.Content.jcmsplugin.seo.titreseo.fr: Titre SEO FR
-extra.Content.jcmsplugin.seo.titreseo.fr.help: Veuillez rédiger un maximum de 60 caractères
-extra.Content.jcmsplugin.seo.titreseo.en: Titre SEO EN
-extra.Content.jcmsplugin.seo.titreseo.en.help: Veuillez rédiger un maximum de 60 caractères
+extradb.Content.jcmsplugin.seo.titreseo.fr: Titre SEO FR
+extradb.Content.jcmsplugin.seo.titreseo.fr.help: Veuillez rédiger un maximum de 60 caractères
+extradb.Content.jcmsplugin.seo.titreseo.en: Titre SEO EN
+extradb.Content.jcmsplugin.seo.titreseo.en.help: Veuillez rédiger un maximum de 60 caractères

@@ -11,10 +11,10 @@ public class TitreSeoPublicationController extends BasicDataController implement
 
    public ControllerStatus checkIntegrity(Data data) {
      Publication pub = (Publication)data ;
-     if (Util.notEmpty(pub.getExtraData("extra.Content.jcmsplugin.seo.titreseo.fr")) && pub.getExtraData("extra.Content.jcmsplugin.seo.titreseo.fr").length() > 60) {
+     if (Util.notEmpty(pub.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo.fr")) && pub.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo.fr").length() > 60) {
          return new ControllerStatus("Le champ Titre Seo FR doit contenir moins de 60 caractères.");
      }
-     if (Util.notEmpty(pub.getExtraData("extra.Content.jcmsplugin.seo.titreseo.en")) && pub.getExtraData("extra.Content.jcmsplugin.seo.titreseo.en").length() > 60) {
+     if (Util.notEmpty(pub.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo.en")) && pub.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo.en").length() > 60) {
          return new ControllerStatus("Le champ Titre Seo EN doit contenir moins de 60 caractères.");
      }
      return ControllerStatus.OK ;
