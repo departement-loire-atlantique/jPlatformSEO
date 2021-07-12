@@ -73,3 +73,8 @@ plugin.seo.error.navigationfooter.id: c_1154095
 # ------------------------------------------------------------
 extradb.Content.jcmsplugin.seo.titreseo.fr: 
 extradb.Content.jcmsplugin.seo.titreseo.en: 
+
+# ------------------------------------------------------------
+#  Extradata Category principal à utiliser en cas de multi-catégories sur le contenu
+# ------------------------------------------------------------
+jcmsplugin.seo.principal.cat.types: FicheArticle FicheAide PageCarrefour
