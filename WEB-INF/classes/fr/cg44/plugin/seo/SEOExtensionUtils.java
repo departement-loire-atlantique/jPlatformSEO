@@ -26,9 +26,16 @@ public class SEOExtensionUtils {
     Object obj = request.getAttribute(PortalManager.PORTAL_PUBLICATION);
     if(Util.notEmpty(obj) && obj instanceof Publication){
       Publication pub = (Publication)obj;
-      if (Util.notEmpty(pub.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + channel.getCurrentUserLang()))) {
-          return pub.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + channel.getCurrentUserLang()) + " - " + channel.getName();
+      if (pub.isInDatabase()) {
+          if (Util.notEmpty(pub.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + channel.getCurrentUserLang()))) {
+              return pub.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + channel.getCurrentUserLang()) + " - " + channel.getName();
+          }
+      } else {
+          if (Util.notEmpty(pub.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + channel.getCurrentUserLang()))) {
+              return pub.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + channel.getCurrentUserLang()) + " - " + channel.getName();
+          }
       }
+      
       return getExtraDBPublicationTitle(pub,channel.getCurrentUserLang(),true);
     }
     Category cat = (Category)request.getAttribute(PortalManager.PORTAL_CURRENTCATEGORY);
