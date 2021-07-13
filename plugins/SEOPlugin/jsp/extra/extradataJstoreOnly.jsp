@@ -13,5 +13,6 @@
  
 
 <jalios:field name="extraValues" label='<%= itLabel %>' value='<%= itValue %>' description='<%= itDesc %>'>
+      <input type="hidden" name="extraKeys" value="<%= itShortKey %>" />
       <jalios:control settings='<%= new TextFieldSettings().maxLength(60) %>' />
 </jalios:field>
