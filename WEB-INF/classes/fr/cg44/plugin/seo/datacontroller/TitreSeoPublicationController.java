@@ -4,6 +4,7 @@ import com.jalios.jcms.BasicDataController;
 import com.jalios.jcms.ControllerStatus;
 import com.jalios.jcms.Data;
 import com.jalios.jcms.Publication;
+import com.jalios.jcms.db.DBData;
 import com.jalios.jcms.plugin.PluginComponent;
 import com.jalios.util.Util;
 
@@ -18,7 +19,7 @@ public class TitreSeoPublicationController extends BasicDataController implement
    public ControllerStatus checkIntegrity(Data data) {
      Publication pub = (Publication)data ;
      
-     if (pub.isInDatabase()) {
+     if (pub.isInDatabase() || pub instanceof DBData) {
          if (Util.notEmpty(pub.getExtraDBData(prefixExtraDb + titreSeoProp + suffixFr)) && pub.getExtraDBData(prefixExtraDb + titreSeoProp + suffixFr).length() > 60) {
              return new ControllerStatus("Le champ Titre Seo FR doit contenir moins de 60 caractères.");
          }
