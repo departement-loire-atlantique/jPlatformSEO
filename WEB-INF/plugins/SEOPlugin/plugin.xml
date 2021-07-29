@@ -26,7 +26,7 @@
     <file path="jsp/googleTagManager/bodyTag.jsp" include="EMPTY_HEADER_BODY_START" />
   </public-files>
   <webapp-files>
-    <file path="robots.txt" />
+    <file path="robots.template" />
     <file path="sitemap.jsp" />  
   </webapp-files>  
 </plugin>
