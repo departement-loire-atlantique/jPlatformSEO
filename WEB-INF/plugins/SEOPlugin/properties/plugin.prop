@@ -73,9 +73,13 @@ plugin.seo.error.navigationfooter.id: c_1154095
 # ------------------------------------------------------------
 extra.Content.jcmsplugin.seo.titreseo.fr.jsp: plugins/SEOPlugin/jsp/extra/extradataJstoreOnly.jsp
 extra.Content.jcmsplugin.seo.titreseo.en.jsp: plugins/SEOPlugin/jsp/extra/extradataJstoreOnly.jsp
+extra.Content.jcmsplugin.seo.descriptionseo.fr.jsp: plugins/SEOPlugin/jsp/extra/extradataJstoreOnly.jsp
+extra.Content.jcmsplugin.seo.descriptionseo.en.jsp: plugins/SEOPlugin/jsp/extra/extradataJstoreOnly.jsp
 
 # ------------------------------------------------------------
 #  Extradbdata titre SEO
 # ------------------------------------------------------------
 extradb.Content.jcmsplugin.seo.titreseo.fr.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
 extradb.Content.jcmsplugin.seo.titreseo.en.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
+extradb.Content.jcmsplugin.seo.descriptionseo.fr.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
+extradb.Content.jcmsplugin.seo.descriptionseo.en.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
