@@ -192,20 +192,24 @@ public class SEOPortalPolicyFilter extends BasicPortalPolicyFilter {
 
     String categoryString = HttpUtil.getUntrustedStringParameter(channel.getCurrentServletRequest(), CATEGORY_PARAMETER, null);
 
-    if (Util.isEmpty(categoryString)) {
-      return;
-    }
-
     Category currentCategory = channel.getCategory(categoryString);
 
     if (Util.notEmpty(currentCategory)) {
       context.setCurrentCategory(currentCategory);
       return;
     }
+    
+    // Permet d'avoir la catégorie de l'url en catégorie courante 
+    Category urlCat = SEOUtils.getURLCategory(context.getPublication()); 
+    if(Util.notEmpty(urlCat)) { 
+      context.setCurrentCategory(urlCat); 
+      return; 
+    } 
 
-    logger.warn(" The category with id : " + categoryString + " has been forced but this category not exists. Referer : "
-        + ServletUtil.getUrl(channel.getCurrentJcmsContext().getRequest()));
-
+    if (Util.notEmpty(categoryString)) {
+      logger.warn(" The category with id : " + categoryString + " has been forced but this category not exists. Referer : "
+          + ServletUtil.getUrl(channel.getCurrentJcmsContext().getRequest()));
+    }
   }
   
 
