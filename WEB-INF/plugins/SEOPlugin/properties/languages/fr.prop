@@ -33,3 +33,10 @@ extradb.Content.jcmsplugin.seo.titreseo.fr: Titre SEO FR
 extradb.Content.jcmsplugin.seo.titreseo.fr.help: Veuillez rédiger un maximum de 60 caractères
 extradb.Content.jcmsplugin.seo.titreseo.en: Titre SEO EN
 extradb.Content.jcmsplugin.seo.titreseo.en.help: Veuillez rédiger un maximum de 60 caractères
+
+# ------------------------------------------------------------
+#  Extradata Category principal à utiliser en cas de multi-catégories sur le contenu
+# ------------------------------------------------------------
+jcmsplugin.seo.principal.cat: Catégorie utilisée pour la navigation
+jcmsplugin.seo.principal.cat.aide: En cas de contenu multi-catégorisé, indique la catégorie à utiliser pour l'url
+jcmsplugin.seo.principal.cat.types: Type de contenu pouvant avoir une catégorie principale pour l'url

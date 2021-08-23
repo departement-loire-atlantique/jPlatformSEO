@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.Content;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Publication;
 import com.jalios.util.HtmlUtil;
@@ -39,6 +40,9 @@ public class SEOUtils {
 		List<Category> rootCatList;
 		Category catThematique = null;
 		
+		if(Util.isEmpty(paramPublication)) {
+		  return null;
+		}
 		
 		/* Récupération des racines de catégories des URLs descriptives */
 		rootCatList = JcmsUtil.stringToDataList(channel.getProperty("descriptive-urls.text.root-cats"), ",", Category.class);
@@ -75,6 +79,21 @@ public class SEOUtils {
 			if (catThematique != null) {
 				break;
 			}
+		}
+		
+		// Si une catégorie prioritaire est définie pour un Content (en store)		
+		if(!paramPublication.isDBData() && paramPublication instanceof Content) {		  
+		  Category currentCatPrioritaire = channel.getCategory(paramPublication.getExtraData("extra." + paramPublication.getClass().getSimpleName()  + ".jcmsplugin.seo.principal.cat")); 
+		  if(currentCatPrioritaire != null) {     
+		    for (Category itRootCategory : thematiquesCategorySet) { 
+		      if ((currentCatPrioritaire == itRootCategory) ||  
+		          (currentCatPrioritaire.hasAncestor(itRootCategory))) 
+		      { 
+		        catThematique = itRootCategory;
+		        break; 
+		      } 
+		    }      
+		  } 
 		}
 		
 		return catThematique;

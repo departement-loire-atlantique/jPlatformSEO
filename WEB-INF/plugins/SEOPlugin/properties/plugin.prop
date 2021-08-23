@@ -79,3 +79,8 @@ extra.Content.jcmsplugin.seo.titreseo.en.jsp: plugins/SEOPlugin/jsp/extra/extrad
 # ------------------------------------------------------------
 extradb.Content.jcmsplugin.seo.titreseo.fr.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
 extradb.Content.jcmsplugin.seo.titreseo.en.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
+
+# ------------------------------------------------------------
+#  Extradata Category principal à utiliser en cas de multi-catégories sur le contenu
+# ------------------------------------------------------------
+jcmsplugin.seo.principal.cat.types: FicheArticle FicheAide PageCarrefour
