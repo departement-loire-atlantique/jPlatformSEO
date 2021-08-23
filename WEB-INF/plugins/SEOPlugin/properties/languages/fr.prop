@@ -1,5 +1,7 @@
 jcmsplugin.seo.sitemap.content.blacklist: Liste noire de types à exclure pour le sitemap
 plugin.seo.gtm.id: ID du marqueur Google Tag Manager
+fr.jcmsplugin.seo.meta-description: Meta description FR
+en.jcmsplugin.seo.meta-description: Meta description EN 
 
 # ------------------------------------------------------------
 #  Pages d'erreur
