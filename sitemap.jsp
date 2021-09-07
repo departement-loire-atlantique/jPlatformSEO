@@ -54,9 +54,9 @@
  
  // CONTENTS
  
- // Liste noire des contenus ignorés
- String[] backlistTab = channel.getStringArrayProperty("jcmsplugin.seo.sitemap.content.blacklist", new String[]{});
- List<String> backlistList = Arrays.asList(backlistTab);
+ // Liste blanche des contenus à prendre en compte
+ String[] whitelistTab = channel.getStringArrayProperty("jcmsplugin.seo.sitemap.content.whitelist", new String[]{});
+ List<String> whitelistList = Arrays.asList(whitelistTab);
  
  
  Set contentSet = channel.getPublicationSet(Content.class, loggedMember);
@@ -74,7 +74,7 @@
      
    
    // Passe les contenus sur la liste noire et les contenus importés
-   if((Util.notEmpty(backlistList) && backlistList.contains(content.getClass().getSimpleName()))
+   if((Util.notEmpty(whitelistList) && !whitelistList.contains(content.getClass().getSimpleName()))
    		|| content.isImported() || SocleUtils.isNonRepertoriee(content) ) {
        continue;
    }
