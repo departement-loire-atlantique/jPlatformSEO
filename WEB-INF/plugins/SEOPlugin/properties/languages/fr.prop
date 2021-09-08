@@ -1,5 +1,9 @@
 jcmsplugin.seo.sitemap.content.whitelist: Liste blanche des types à inclure dans le sitemap
 plugin.seo.gtm.id: ID du marqueur Google Tag Manager
+fr.jcmsplugin.seo.meta-description: Meta description FR
+fr.jcmsplugin.seo.meta-description.help: Meta description générique qui apparaitra si elle n'a pas été surchargée au niveau des contenus
+en.jcmsplugin.seo.meta-description: Meta description EN
+en.jcmsplugin.seo.meta-description.help: Meta description générique qui apparaitra si elle n'a pas été surchargée au niveau des contenus  
 
 # ------------------------------------------------------------
 #  Pages d'erreur
