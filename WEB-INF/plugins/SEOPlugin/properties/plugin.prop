@@ -71,7 +71,7 @@ plugin.seo.error.footer.id: c_1154096
 plugin.seo.error.navigationfooter.id: c_1154095
 
 # ------------------------------------------------------------
-#  Extradata titre SEO
+#  Extradata
 # ------------------------------------------------------------
 extra.Content.jcmsplugin.seo.titreseo.fr.jsp: plugins/SEOPlugin/jsp/extra/extradataJstoreOnly.jsp
 extra.Content.jcmsplugin.seo.titreseo.en.jsp: plugins/SEOPlugin/jsp/extra/extradataJstoreOnly.jsp
@@ -79,14 +79,19 @@ extra.Content.jcmsplugin.seo.descriptionseo.fr.jsp: plugins/SEOPlugin/jsp/extra/
 extra.Content.jcmsplugin.seo.descriptionseo.en.jsp: plugins/SEOPlugin/jsp/extra/extradataJstoreOnly.jsp
 
 # ------------------------------------------------------------
-#  Extradbdata titre SEO
+#  Extradbdata
 # ------------------------------------------------------------
 extradb.Content.jcmsplugin.seo.titreseo.fr.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
 extradb.Content.jcmsplugin.seo.titreseo.en.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
 extradb.Content.jcmsplugin.seo.descriptionseo.fr.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
 extradb.Content.jcmsplugin.seo.descriptionseo.en.jsp: plugins/SEOPlugin/jsp/extra/extradataDBOnly.jsp
 
+jcmsplugin.seo.titreseo.tailleMax:70
+jcmsplugin.seo.descriptionseo.tailleMax:170
+
 # ------------------------------------------------------------
 #  Extradata Category principal à utiliser en cas de multi-catégories sur le contenu
 # ------------------------------------------------------------
 jcmsplugin.seo.principal.cat.types: FicheArticle FicheAide PageCarrefour
+
+
