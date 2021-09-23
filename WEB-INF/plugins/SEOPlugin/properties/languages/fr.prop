@@ -3,7 +3,11 @@ plugin.seo.gtm.id: ID du marqueur Google Tag Manager
 fr.jcmsplugin.seo.meta-description: Meta description FR
 fr.jcmsplugin.seo.meta-description.help: Meta description générique qui apparaitra si elle n'a pas été surchargée au niveau des contenus
 en.jcmsplugin.seo.meta-description: Meta description EN
-en.jcmsplugin.seo.meta-description.help: Meta description générique qui apparaitra si elle n'a pas été surchargée au niveau des contenus  
+en.jcmsplugin.seo.meta-description.help: Meta description générique qui apparaitra si elle n'a pas été surchargée au niveau des contenus
+fr.jcmsplugin.seo.meta-title: Nom du site FR
+fr.jcmsplugin.seo.meta-title.help: Sert de suffixe dans les titres de pages (balise "title")
+en.jcmsplugin.seo.meta-title: Nom du site EN  
+en.jcmsplugin.seo.meta-title.help: Sert de suffixe dans les titres de pages (balise "title")
 
 # ------------------------------------------------------------
 #  Pages d'erreur

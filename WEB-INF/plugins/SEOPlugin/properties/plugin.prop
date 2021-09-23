@@ -55,7 +55,9 @@ plugin.seo.fullPage.content.blacklist:
 plugin.seo.category.navigation.id: c_5025
 plugin.seo.portal.fullDisplay.id: c_1088637
 fr.jcmsplugin.seo.meta-description.area: 
-en.jcmsplugin.seo.meta-description.area: 
+en.jcmsplugin.seo.meta-description.area:
+fr.jcmsplugin.seo.meta-title: 
+en.jcmsplugin.seo.meta-title:  
 
 # ------------------------------------------------------------
 #  Analytics
