@@ -120,5 +120,16 @@ public class SEOUtils {
 	}
 	
 	
-
+	/**
+	 * Récupère le nom du site indiqué en propriété de module.
+	 * Renvoie le channel.name si la propriété n'a pas été renseignée.
+   * @param 
+   * @return le nom du site
+   */
+  public static String getSiteName() {
+    String userLang = channel.getCurrentUserLang();
+    String siteName = Util.notEmpty(JcmsUtil.glp(userLang, "jcmsplugin.seo.meta-title")) ? JcmsUtil.glp(userLang, "jcmsplugin.seo.meta-title") : channel.getName();
+    
+    return siteName;
+  }
 }
