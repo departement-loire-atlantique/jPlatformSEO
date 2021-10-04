@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.Content;
 import com.jalios.jcms.Data;
 import com.jalios.jcms.DescriptiveURLs;
 import com.jalios.jcms.HttpUtil;
@@ -192,19 +193,27 @@ public class SEOPortalPolicyFilter extends BasicPortalPolicyFilter {
 
     String categoryString = HttpUtil.getUntrustedStringParameter(channel.getCurrentServletRequest(), CATEGORY_PARAMETER, null);
 
-    if (Util.isEmpty(categoryString)) {
-      return;
-    }
-
     Category currentCategory = channel.getCategory(categoryString);
 
     if (Util.notEmpty(currentCategory)) {
       context.setCurrentCategory(currentCategory);
       return;
     }
+       
+    // Si une catégorie prioritaire est définie pour un Content (en store) 
+    // alors définir cette catégorie prioritaire comme catégorie courante
+    Publication paramPublication = context.getPublication(); 
+    if(paramPublication != null && !paramPublication.isDBData() && paramPublication instanceof Content) {     
+      Category currentCatPrioritaire = channel.getCategory(paramPublication.getExtraData("extra." + paramPublication.getClass().getSimpleName()  + ".jcmsplugin.seo.principal.cat")); 
+      if(currentCatPrioritaire != null) {     
+        context.setCurrentCategory(currentCatPrioritaire);     
+      } 
+    }
 
-    logger.warn(" The category with id : " + categoryString + " has been forced but this category not exists. Referer : "
-        + ServletUtil.getUrl(channel.getCurrentJcmsContext().getRequest()));
+    if (Util.notEmpty(categoryString)) {
+      logger.warn(" The category with id : " + categoryString + " has been forced but this category not exists. Referer : "
+          + ServletUtil.getUrl(channel.getCurrentJcmsContext().getRequest()));
+    }
 
   }
   
