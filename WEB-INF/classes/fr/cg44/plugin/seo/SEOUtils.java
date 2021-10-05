@@ -81,7 +81,8 @@ public class SEOUtils {
 			}
 		}
 		
-		// Si une catégorie prioritaire est définie pour un Content (en store)		
+		// Si une catégorie prioritaire est définie pour un Content (en store)
+		// Alors cette catégorie prioritaire est utilisée pour calculer la thématique
 		if(!paramPublication.isDBData() && paramPublication instanceof Content) {		  
 		  Category currentCatPrioritaire = channel.getCategory(paramPublication.getExtraData("extra." + paramPublication.getClass().getSimpleName()  + ".jcmsplugin.seo.principal.cat")); 
 		  if(currentCatPrioritaire != null) {     
